@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/analysis.css">
+    <meta charset="UTF-8"> 
+</head>
+<body>
+
+    <h2>Analysis</h2>
+
+    <div id="grid-wrapper">
+        <div id ="board"> </div>
+        <div id="analysis">
+            <div id="show-fen">
+                <label for="fen"> <b>FEN:</b> </label> 
+                <input type="text" id="fen" name="fen" value="" size="100" readonly>
+            </div>
+            <div id="edit-fen">
+                <input type="text" id="new-fen" name="new-fen" value="" size="100"> <button id="new-fen-button"> Update FEN </button>
+            </div>
+        </div>
+
+        <div id="control">
+            <h4> Control </h4>
+            <label for="game"> Upload game </label>
+            <input type="file" id="game" name="game">
+            <textarea id="submitted"> </textarea>
+
+            <button id="load-button"> Load game </button>
+            <div id="panel">
+                <span id="left-arrow">⇦</span>..<span id="right-arrow">⇨</span>
+            </div>
+            <textarea id="fenlist"> </textarea>
+        </div>
+    </div>
+
+<script src="js/analysis.js">
+</script>
+
+</body>
+</html> 
+

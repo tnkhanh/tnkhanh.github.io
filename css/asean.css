@@ -1,0 +1,11 @@
+body {
+    background-color: aquamarine;
+}
+
+.txt {
+    display: inline-block;
+}
+
+img {
+    max-height: 200px;
+}

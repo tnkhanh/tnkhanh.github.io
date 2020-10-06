@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/cgitest.css">
+    </head>
+<body>
+
+<h2>Some CGI Test</h2>
+
+<form action="/cgi-bin/cginame" method="post">
+  <label for="content">Content:</label><br>
+  <input type="text" id="content" name="content" value="something something"><br>
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value="John"><br>
+  <label for="age">Age:</label><br>
+  <input type="text" id="age" name="age" value="18"><br>
+ 
+  <input type="submit" value="Submit">
+</form> 
+
+<div id="test2">
+    <label for="sth">Something:</label>
+    <input type="text" id="sth" name="sth">
+    <button id="nice"> Nice submit </button>
+    <div id="show">
+    </div>
+</div>
+
+<script src="/js/cgitest.js">
+</script>
+
+</body>
+</html>

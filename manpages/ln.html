@@ -1,0 +1,129 @@
+<p>LN(1) User Commands LN(1)</p>
+
+<p style="margin-top: 1em">NAME <br>
+ln - make links between files</p>
+
+<p style="margin-top: 1em">SYNOPSIS <br>
+ln [OPTION]... [-T] TARGET LINK_NAME <br>
+ln [OPTION]... TARGET <br>
+ln [OPTION]... TARGET... DIRECTORY <br>
+ln [OPTION]... -t DIRECTORY TARGET...</p>
+
+<p style="margin-top: 1em">DESCRIPTION <br>
+In the 1st form, create a link to TARGET with the name
+LINK_NAME. In the 2nd form, create a link to TARGET in the
+current directory. In the 3rd and 4th forms, <br>
+create links to each TARGET in DIRECTORY. Create hard links
+by default, symbolic links with --symbolic. By default, each
+destination (name of new link) should <br>
+not already exist. When creating hard links, each TARGET
+must exist. Symbolic links can hold arbitrary text; if later
+resolved, a relative link is interpreted in <br>
+relation to its parent directory.</p>
+
+<p style="margin-top: 1em">Mandatory arguments to long
+options are mandatory for short options too.</p>
+
+<p style="margin-top: 1em">--backup[=CONTROL] <br>
+make a backup of each existing destination file</p>
+
+<p style="margin-top: 1em">-b like --backup but does not
+accept an argument</p>
+
+<p style="margin-top: 1em">-d, -F, --directory <br>
+allow the superuser to attempt to hard link directories
+(note: will probably fail due to system restrictions, even
+for the superuser)</p>
+
+<p style="margin-top: 1em">-f, --force <br>
+remove existing destination files</p>
+
+<p style="margin-top: 1em">-i, --interactive <br>
+prompt whether to remove destinations</p>
+
+<p style="margin-top: 1em">-L, --logical <br>
+dereference TARGETs that are symbolic links</p>
+
+<p style="margin-top: 1em">-n, --no-dereference <br>
+treat LINK_NAME as a normal file if it is a symbolic link to
+a directory</p>
+
+<p style="margin-top: 1em">-P, --physical <br>
+make hard links directly to symbolic links</p>
+
+<p style="margin-top: 1em">-r, --relative <br>
+create symbolic links relative to link location</p>
+
+<p style="margin-top: 1em">-s, --symbolic <br>
+make symbolic links instead of hard links</p>
+
+<p style="margin-top: 1em">-S, --suffix=SUFFIX <br>
+override the usual backup suffix</p>
+
+<p style="margin-top: 1em">-t, --target-directory=DIRECTORY
+<br>
+specify the DIRECTORY in which to create the links</p>
+
+<p style="margin-top: 1em">-T, --no-target-directory <br>
+treat LINK_NAME as a normal file always</p>
+
+<p style="margin-top: 1em">-v, --verbose <br>
+print name of each linked file</p>
+
+<p style="margin-top: 1em">--help display this help and
+exit</p>
+
+<p style="margin-top: 1em">--version <br>
+output version information and exit</p>
+
+<p style="margin-top: 1em">The backup suffix is
+&rsquo;~&rsquo;, unless set with --suffix or
+SIMPLE_BACKUP_SUFFIX. The version control method may be
+selected via the --backup option or through the VER&acirc;
+<br>
+SION_CONTROL environment variable. Here are the values:</p>
+
+<p style="margin-top: 1em">none, off <br>
+never make backups (even if --backup is given)</p>
+
+<p style="margin-top: 1em">numbered, t <br>
+make numbered backups</p>
+
+<p style="margin-top: 1em">existing, nil <br>
+numbered if numbered backups exist, simple otherwise</p>
+
+<p style="margin-top: 1em">simple, never <br>
+always make simple backups</p>
+
+<p style="margin-top: 1em">Using -s ignores -L and -P.
+Otherwise, the last option specified controls behavior when
+a TARGET is a symbolic link, defaulting to -P.</p>
+
+<p style="margin-top: 1em">AUTHOR <br>
+Written by Mike Parker and David MacKenzie.</p>
+
+<p style="margin-top: 1em">REPORTING BUGS <br>
+GNU coreutils online help:
+&lt;https://www.gnu.org/software/coreutils/&gt; <br>
+Report ln translation bugs to
+&lt;https://translationproject.org/team/&gt;</p>
+
+<p style="margin-top: 1em">COPYRIGHT <br>
+Copyright &Acirc;&copy; 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+&lt;https://gnu.org/licenses/gpl.html&gt;. <br>
+This is free software: you are free to change and
+redistribute it. There is NO WARRANTY, to the extent
+permitted by law.</p>
+
+<p style="margin-top: 1em">SEE ALSO <br>
+link(2), symlink(2)</p>
+
+<p style="margin-top: 1em">Full documentation at:
+&lt;https://www.gnu.org/software/coreutils/ln&gt; <br>
+or available locally via: info &rsquo;(coreutils) ln
+invocation&rsquo;</p>
+
+<p style="margin-top: 1em">GNU coreutils 8.30 February 2019
+LN(1)</p>
+<hr>

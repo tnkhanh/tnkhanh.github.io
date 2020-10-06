@@ -1,0 +1,112 @@
+<p>MV(1) User Commands MV(1)</p>
+
+<p style="margin-top: 1em">NAME <br>
+mv - move (rename) files</p>
+
+<p style="margin-top: 1em">SYNOPSIS <br>
+mv [OPTION]... [-T] SOURCE DEST <br>
+mv [OPTION]... SOURCE... DIRECTORY <br>
+mv [OPTION]... -t DIRECTORY SOURCE...</p>
+
+<p style="margin-top: 1em">DESCRIPTION <br>
+Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.</p>
+
+<p style="margin-top: 1em">Mandatory arguments to long
+options are mandatory for short options too.</p>
+
+<p style="margin-top: 1em">--backup[=CONTROL] <br>
+make a backup of each existing destination file</p>
+
+<p style="margin-top: 1em">-b like --backup but does not
+accept an argument</p>
+
+<p style="margin-top: 1em">-f, --force <br>
+do not prompt before overwriting</p>
+
+<p style="margin-top: 1em">-i, --interactive <br>
+prompt before overwrite</p>
+
+<p style="margin-top: 1em">-n, --no-clobber <br>
+do not overwrite an existing file</p>
+
+<p style="margin-top: 1em">If you specify more than one of
+-i, -f, -n, only the final one takes effect.</p>
+
+<p style="margin-top: 1em">--strip-trailing-slashes <br>
+remove any trailing slashes from each SOURCE argument</p>
+
+<p style="margin-top: 1em">-S, --suffix=SUFFIX <br>
+override the usual backup suffix</p>
+
+<p style="margin-top: 1em">-t, --target-directory=DIRECTORY
+<br>
+move all SOURCE arguments into DIRECTORY</p>
+
+<p style="margin-top: 1em">-T, --no-target-directory <br>
+treat DEST as a normal file</p>
+
+<p style="margin-top: 1em">-u, --update <br>
+move only when the SOURCE file is newer than the destination
+file or when the destination file is missing</p>
+
+<p style="margin-top: 1em">-v, --verbose <br>
+explain what is being done</p>
+
+<p style="margin-top: 1em">-Z, --context <br>
+set SELinux security context of destination file to default
+type</p>
+
+<p style="margin-top: 1em">--help display this help and
+exit</p>
+
+<p style="margin-top: 1em">--version <br>
+output version information and exit</p>
+
+<p style="margin-top: 1em">The backup suffix is
+&rsquo;~&rsquo;, unless set with --suffix or
+SIMPLE_BACKUP_SUFFIX. The version control method may be
+selected via the --backup option or through the VER&acirc;
+<br>
+SION_CONTROL environment variable. Here are the values:</p>
+
+<p style="margin-top: 1em">none, off <br>
+never make backups (even if --backup is given)</p>
+
+<p style="margin-top: 1em">numbered, t <br>
+make numbered backups</p>
+
+<p style="margin-top: 1em">existing, nil <br>
+numbered if numbered backups exist, simple otherwise</p>
+
+<p style="margin-top: 1em">simple, never <br>
+always make simple backups</p>
+
+<p style="margin-top: 1em">AUTHOR <br>
+Written by Mike Parker, David MacKenzie, and Jim
+Meyering.</p>
+
+<p style="margin-top: 1em">REPORTING BUGS <br>
+GNU coreutils online help:
+&lt;https://www.gnu.org/software/coreutils/&gt; <br>
+Report mv translation bugs to
+&lt;https://translationproject.org/team/&gt;</p>
+
+<p style="margin-top: 1em">COPYRIGHT <br>
+Copyright &Acirc;&copy; 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+&lt;https://gnu.org/licenses/gpl.html&gt;. <br>
+This is free software: you are free to change and
+redistribute it. There is NO WARRANTY, to the extent
+permitted by law.</p>
+
+<p style="margin-top: 1em">SEE ALSO <br>
+rename(2)</p>
+
+<p style="margin-top: 1em">Full documentation at:
+&lt;https://www.gnu.org/software/coreutils/mv&gt; <br>
+or available locally via: info &rsquo;(coreutils) mv
+invocation&rsquo;</p>
+
+<p style="margin-top: 1em">GNU coreutils 8.30 February 2019
+MV(1)</p>
+<hr>

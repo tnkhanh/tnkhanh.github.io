@@ -1,0 +1,917 @@
+<p>GROFF(1) General Commands Manual GROFF(1)</p>
+
+<p style="margin-top: 1em">NAME <br>
+groff - front-end for the groff document formatting
+system</p>
+
+<p style="margin-top: 1em">SYNOPSIS <br>
+groff [-abcegijklpstzCEGNRSUVXZ] [-d cs] [-D arg] [-f fam]
+[-F dir] [-I dir] [-K arg] [-L arg] [-m name] [-M dir] [-n
+num] [-o list] [-P arg] [-r cn] [-T dev] <br>
+[-w name] [-W name] [file ...]</p>
+
+<p style="margin-top: 1em">groff -h <br>
+groff --help</p>
+
+<p style="margin-top: 1em">groff -v [option ...] <br>
+groff --version [option ...]</p>
+
+<p style="margin-top: 1em">DESCRIPTION <br>
+This document describes the groff program, the main
+front-end for the groff document formatting system. The
+groff program and macro suite is the implementation of <br>
+a roff(7) system within the free software collection GNU
+&acirc;&uml;http://www.gnu.org&acirc;&copy;. The groff
+system has all features of the classical roff, but adds many
+extensions.</p>
+
+<p style="margin-top: 1em">The groff program allows control
+of the whole groff system by command-line options. This is a
+great simplification in comparison to the classical case
+(which uses <br>
+pipes only).</p>
+
+<p style="margin-top: 1em">OPTIONS <br>
+The command line is parsed according to the usual GNU
+convention. Whitespace is permitted between a command-line
+option and its argument. Options can be grouped <br>
+behind a single &acirc;-&acirc; (minus character). A
+filename of - (minus character) denotes the standard
+input.</p>
+
+<p style="margin-top: 1em">As groff is a wrapper program
+for troff both programs share a set of options. But the
+groff program has some additional, native options and gives
+a new meaning to <br>
+some troff options. On the other hand, not all troff options
+can be fed into groff.</p>
+
+<p style="margin-top: 1em">Native groff Options <br>
+The following options either do not exist for troff or are
+differently interpreted by groff.</p>
+
+<p style="margin-top: 1em">-D arg Set default input
+encoding used by preconv to arg. Implies -k.</p>
+
+<p style="margin-top: 1em">-e Preprocess with eqn.</p>
+
+<p style="margin-top: 1em">-g Preprocess with grn.</p>
+
+<p style="margin-top: 1em">-G Preprocess with grap. Implies
+-p.</p>
+
+<p style="margin-top: 1em">-h <br>
+--help Print a help message.</p>
+
+<p style="margin-top: 1em">-I dir This option may be used
+to specify a directory to search for files (both those on
+the command line and those named in .psbb and .so requests,
+and <br>
+port&rsquo; , and escapes). The current directory is always
+searched first. This option may be specified more than once;
+the direc&acirc; <br>
+tories are searched in the order specified. No directory
+search is performed for files specified using an absolute
+path. This option implies the -s op&acirc; <br>
+tion.</p>
+
+<p style="margin-top: 1em">-j Preprocess with chem. Implies
+-p.</p>
+
+<p style="margin-top: 1em">-k Preprocess with preconv. This
+is run before any other preprocessor. Please refer to
+preconv&rsquo;s manual page for its behaviour if no -K (or
+-D) option is <br>
+specified.</p>
+
+<p style="margin-top: 1em">-K arg Set input encoding used
+by preconv to arg. Implies -k.</p>
+
+<p style="margin-top: 1em">-l Send the output to a spooler
+program for printing. The command that should be used for
+this is specified by the print command in the device
+description <br>
+file, see groff_font(5). If this command is not present, the
+output is piped into the lpr(1) program by default. See
+options -L and -X.</p>
+
+<p style="margin-top: 1em">-L arg Pass arg to the spooler
+program. Several arguments should be passed with a separate
+-L option each. Note that groff does not prepend
+&acirc;-&acirc; (a minus sign) to <br>
+arg before passing it to the spooler program.</p>
+
+<p style="margin-top: 1em">-N Don&rsquo;t allow newlines
+within eqn delimiters. This is the same as the -N option in
+eqn.</p>
+
+<p style="margin-top: 1em">-p Preprocess with pic.</p>
+
+<p style="margin-top: 1em">-P -option <br>
+-P -option -P arg <br>
+Pass -option or -option arg to the postprocessor. The option
+must be specified with the necessary preceding minus sign(s)
+&acirc;-&acirc; or &acirc;--&acirc; because groff does <br>
+not prepend any dashes before passing it to the
+postprocessor. For example, to pass a title to the gxditview
+postprocessor, the shell command</p>
+
+<p style="margin-top: 1em">groff -X -P -title -P
+&rsquo;groff it&rsquo; foo</p>
+
+<p style="margin-top: 1em">is equivalent to</p>
+
+<p style="margin-top: 1em">groff -X -Z foo | gxditview
+-title &rsquo;groff it&rsquo; -</p>
+
+<p style="margin-top: 1em">-R Preprocess with refer. No
+mechanism is provided for passing arguments to refer because
+most refer options have equivalent language elements that
+can be <br>
+specified within the document. See refer(1) for more
+details.</p>
+
+<p style="margin-top: 1em">-s Preprocess with soelim.</p>
+
+<p style="margin-top: 1em">-S Safer mode. Pass the -S
+option to pic and disable the following troff requests:
+.open, .opena, .pso, .sy, and .pi. For security reasons,
+safer mode is en&acirc; <br>
+abled by default.</p>
+
+<p style="margin-top: 1em">-t Preprocess with tbl.</p>
+
+<p style="margin-top: 1em">-T dev Set output device to dev.
+For this device, troff generates the intermediate output;
+see groff_out(5). Then groff calls a postprocessor to
+convert troff&rsquo;s <br>
+intermediate output to its final format. Real devices in
+groff are</p>
+
+<p style="margin-top: 1em">dvi TeX DVI format
+(postprocessor is grodvi).</p>
+
+<p style="margin-top: 1em">html <br>
+xhtml HTML and XHTML output (preprocessors are soelim and
+pre-grohtml, postprocessor is post-grohtml).</p>
+
+<p style="margin-top: 1em">lbp Canon CAPSL printers (LBP-4
+and LBP-8 series laser printers; postprocessor is
+grolbp).</p>
+
+<p style="margin-top: 1em">lj4 HP LaserJet4 compatible (or
+other PCL5 compatible) printers (postprocessor is
+grolj4).</p>
+
+<p style="margin-top: 1em">ps PostScript output
+(postprocessor is grops).</p>
+
+<p style="margin-top: 1em">pdf Portable Document Format
+(PDF) output (postprocessor is gropdf).</p>
+
+<p style="margin-top: 1em">For the following TTY output
+devices (postprocessor is always grotty), -T selects the
+output encoding:</p>
+
+<p style="margin-top: 1em">ascii 7bit ASCII.</p>
+
+<p style="margin-top: 1em">cp1047 Latin-1 character set for
+EBCDIC hosts.</p>
+
+<p style="margin-top: 1em">latin1 ISO 8859-1.</p>
+
+<p style="margin-top: 1em">utf8 Unicode character set in
+UTF-8 encoding. This mode has the most useful fonts for TTY
+mode, so it is the best mode for TTY output.</p>
+
+<p style="margin-top: 1em">The following arguments select
+gxditview as the &acirc;postprocessor&acirc; (it is rather a
+viewing program):</p>
+
+<p style="margin-top: 1em">X75 75dpi resolution, 10pt
+document base font.</p>
+
+<p style="margin-top: 1em">X75-12 75dpi resolution, 12pt
+document base font.</p>
+
+<p style="margin-top: 1em">X100 100dpi resolution, 10pt
+document base font.</p>
+
+<p style="margin-top: 1em">X100-12 <br>
+100dpi resolution, 12pt document base font.</p>
+
+<p style="margin-top: 1em">The default device is ps.</p>
+
+<p style="margin-top: 1em">-U Unsafe mode. Reverts to the
+(old) unsafe behaviour; see option -S.</p>
+
+<p style="margin-top: 1em">-v <br>
+--version <br>
+Output version information of groff and of all programs that
+are run by it; that is, the given command line is parsed in
+the usual way, passing -v to all <br>
+subprograms.</p>
+
+<p style="margin-top: 1em">-V Output the pipeline that
+would be run by groff (as a wrapper program) on the standard
+output, but do not execute it. If given more than once, the
+commands <br>
+are both printed on the standard error and run.</p>
+
+<p style="margin-top: 1em">-X Use gxditview instead of
+using the usual postprocessor to (pre)view a document. The
+printing spooler behavior as outlined with options -l and -L
+is carried <br>
+over to gxditview(1) by determining an argument for the
+-printCommand option of gxditview(1). This sets the default
+Print action and the corresponding menu <br>
+entry to that value. -X only produces good results with
+-Tps, -TX75, -TX75-12, -TX100, and -TX100-12. The default
+resolution for previewing -Tps output is <br>
+75dpi; this can be changed by passing the -resolution option
+to gxditview, for example</p>
+
+<p style="margin-top: 1em">groff -X -P-resolution -P100
+-man foo.1</p>
+
+<p style="margin-top: 1em">-z Suppress output generated by
+troff. Only error messages are printed.</p>
+
+<p style="margin-top: 1em">-Z Do not automatically
+postprocess groff intermediate output in the usual manner.
+This will cause the troff output to appear on standard
+output, replacing <br>
+the usual postprocessor output; see groff_out(5).</p>
+
+<p style="margin-top: 1em">Transparent Options <br>
+The following options are transparently handed over to the
+formatter program troff that is called by groff
+subsequently. These options are described in more de&acirc;
+<br>
+tail in troff(1).</p>
+
+<p style="margin-top: 1em">-a ASCII approximation of
+output.</p>
+
+<p style="margin-top: 1em">-b Backtrace on error or
+warning.</p>
+
+<p style="margin-top: 1em">-c Disable color output. Please
+consult the grotty(1) man page for more details.</p>
+
+<p style="margin-top: 1em">-C Enable compatibility
+mode.</p>
+
+<p style="margin-top: 1em">-d cs <br>
+-d name=s <br>
+Define string.</p>
+
+<p style="margin-top: 1em">-E Disable troff error
+messages.</p>
+
+<p style="margin-top: 1em">-f fam Set default font
+family.</p>
+
+<p style="margin-top: 1em">-F dir Set path for device DESC
+files.</p>
+
+<p style="margin-top: 1em">-i Process standard input after
+the specified input files.</p>
+
+<p style="margin-top: 1em">-m name <br>
+Include macro file name.tmac (or tmac.name); see also
+groff_tmac(5).</p>
+
+<p style="margin-top: 1em">-M dir Path for macro files.</p>
+
+<p style="margin-top: 1em">-n num Number the first page
+num.</p>
+
+<p style="margin-top: 1em">-o list <br>
+Output only pages in list.</p>
+
+<p style="margin-top: 1em">-r cn <br>
+-r name=n <br>
+Set number register.</p>
+
+<p style="margin-top: 1em">-w name <br>
+Enable warning name. See troff(1) for names.</p>
+
+<p style="margin-top: 1em">-W name <br>
+disable warning name. See troff(1) for names.</p>
+
+<p style="margin-top: 1em">USING GROFF <br>
+The groff system implements the infrastructure of classical
+roff; see roff(7) for a survey on how a roff system works in
+general. Due to the front-end programs <br>
+available within the groff system, using groff is much
+easier than classical roff. This section gives an overview
+of the parts that constitute the groff system. <br>
+It complements roff(7) with groff-specific features. This
+section can be regarded as a guide to the documentation
+around the groff system.</p>
+
+<p style="margin-top: 1em">Paper Size <br>
+The virtual paper size used by troff to format the input is
+controlled globally with the requests .po, .pl, and .ll. See
+groff_tmac(5) for the &acirc;papersize&acirc; macro <br>
+package which provides a convenient interface.</p>
+
+<p style="margin-top: 1em">The physical paper size, giving
+the actual dimensions of the paper sheets, is controlled by
+output devices like grops with the command-line options -p
+and -l. See <br>
+groff_font(5) and the man pages of the output devices for
+more details. groff uses the command-line option -P to pass
+options to output devices; for example, the <br>
+following selects A4 paper in landscape orientation for the
+PS device:</p>
+
+<p style="margin-top: 1em">groff -Tps -P-pa4 -P-l ...</p>
+
+<p style="margin-top: 1em">Front-ends <br>
+The groff program is a wrapper around the troff(1) program.
+It allows one to specify the preprocessors by command-line
+options and automatically runs the postpro&acirc; <br>
+cessor that is appropriate for the selected device. Doing
+so, the sometimes tedious piping mechanism of classical
+roff(7) can be avoided.</p>
+
+<p style="margin-top: 1em">The grog(1) program can be used
+for guessing the correct groff command line to format a
+file.</p>
+
+<p style="margin-top: 1em">The groffer(1) program is an
+all-around viewer for groff files and man pages.</p>
+
+<p style="margin-top: 1em">Preprocessors <br>
+The groff preprocessors are reimplementations of the
+classical preprocessors with moderate extensions. The
+standard preprocessors distributed with the groff
+pack&acirc; <br>
+age are</p>
+
+<p style="margin-top: 1em">eqn(1) for mathematical
+formulae,</p>
+
+<p style="margin-top: 1em">grn(1) for including gremlin(1)
+pictures,</p>
+
+<p style="margin-top: 1em">pic(1) for drawing diagrams,</p>
+
+<p style="margin-top: 1em">chem(1) <br>
+for chemical structure diagrams,</p>
+
+<p style="margin-top: 1em">refer(1) <br>
+for bibliographic references,</p>
+
+<p style="margin-top: 1em">soelim(1) <br>
+for including macro files from standard locations,</p>
+
+<p style="margin-top: 1em">and</p>
+
+<p style="margin-top: 1em">tbl(1) for tables.</p>
+
+<p style="margin-top: 1em">A new preprocessor not available
+in classical troff is preconv(1) which converts various
+input encodings to something groff can understand. It is
+always run first <br>
+before any other preprocessor.</p>
+
+<p style="margin-top: 1em">Besides these, there are some
+internal preprocessors that are automatically run with some
+devices. These aren&rsquo;t visible to the user.</p>
+
+<p style="margin-top: 1em">Macro Packages <br>
+Macro packages can be included by option -m. The groff
+system implements and extends all classical macro packages
+in a compatible way and adds some packages of <br>
+its own. Actually, the following macro packages come with
+groff:</p>
+
+<p style="margin-top: 1em">man The traditional man page
+format; see groff_man(7). It can be specified on the command
+line as -man or -m man.</p>
+
+<p style="margin-top: 1em">mandoc The general package for
+man pages; it automatically recognizes whether the documents
+uses the man or the mdoc format and branches to the
+corresponding macro <br>
+package. It can be specified on the command line as -mandoc
+or -m mandoc.</p>
+
+<p style="margin-top: 1em">mdoc The BSD-style man page
+format; see groff_mdoc(7). It can be specified on the
+command line as -mdoc or -m mdoc.</p>
+
+<p style="margin-top: 1em">me The classical me document
+format; see groff_me(7). It can be specified on the command
+line as -me or -m me.</p>
+
+<p style="margin-top: 1em">mm The classical mm document
+format; see groff_mm(7). It can be specified on the command
+line as -mm or -m mm.</p>
+
+<p style="margin-top: 1em">ms The classical ms document
+format; see groff_ms(7). It can be specified on the command
+line as -ms or -m ms.</p>
+
+<p style="margin-top: 1em">www HTML-like macros for
+inclusion in arbitrary groff documents; see
+groff_www(7).</p>
+
+<p style="margin-top: 1em">Details on the naming of macro
+files and their placement can be found in groff_tmac(5);
+this man page also documents some other, minor auxiliary
+macro packages not <br>
+mentioned here.</p>
+
+<p style="margin-top: 1em">Programming Language <br>
+General concepts common to all roff programming languages
+are described in roff(7).</p>
+
+<p style="margin-top: 1em">The groff extensions to the
+classical troff language are documented in
+groff_diff(7).</p>
+
+<p style="margin-top: 1em">An overview of language
+features, including all supported escapes and requests, can
+be found in groff(7).</p>
+
+<p style="margin-top: 1em">Formatters <br>
+The central roff formatter within the groff system is
+troff(1). It provides the features of both the classical
+troff and nroff, as well as the groff extensions. <br>
+The command-line option -C switches troff into compatibility
+mode which tries to emulate classical roff as much as
+possible.</p>
+
+<p style="margin-top: 1em">There is a shell script nroff(1)
+that emulates the behavior of classical nroff. It tries to
+automatically select the proper output encoding, according
+to the cur&acirc; <br>
+rent locale.</p>
+
+<p style="margin-top: 1em">The formatter program generates
+intermediate output; see groff_out(7).</p>
+
+<p style="margin-top: 1em">Devices <br>
+In roff, the output targets are called devices. A device can
+be a piece of hardware, e.g., a printer, or a software file
+format. A device is specified by the op&acirc; <br>
+tion -T. The groff devices are as follows.</p>
+
+<p style="margin-top: 1em">ascii Text output using the
+ascii(7) character set.</p>
+
+<p style="margin-top: 1em">cp1047 Text output using the
+EBCDIC code page IBM cp1047 (e.g., OS/390 Unix).</p>
+
+<p style="margin-top: 1em">dvi TeX DVI format.</p>
+
+<p style="margin-top: 1em">html HTML output.</p>
+
+<p style="margin-top: 1em">latin1 Text output using the ISO
+Latin-1 (ISO 8859-1) character set; see iso_8859_1(7).</p>
+
+<p style="margin-top: 1em">lbp Output for Canon CAPSL
+printers (LBP-4 and LBP-8 series laser printers).</p>
+
+<p style="margin-top: 1em">lj4 HP LaserJet4-compatible (or
+other PCL5-compatible) printers.</p>
+
+<p style="margin-top: 1em">ps PostScript output; suitable
+for printers and previewers like gv(1).</p>
+
+<p style="margin-top: 1em">pdf PDF files; suitable for
+viewing with tools such as evince(1) and okular(1).</p>
+
+<p style="margin-top: 1em">utf8 Text output using the
+Unicode (ISO 10646) character set with UTF-8 encoding; see
+unicode(7).</p>
+
+<p style="margin-top: 1em">xhtml XHTML output.</p>
+
+<p style="margin-top: 1em">X75 75dpi X Window System output
+suitable for the previewers xditview(1x) and gxditview(1). A
+variant for a 12pt document base font is X75-12.</p>
+
+<p style="margin-top: 1em">X100 100dpi X Window System
+output suitable for the previewers xditview(1x) and
+gxditview(1). A variant for a 12pt document base font is
+X100-12.</p>
+
+<p style="margin-top: 1em">The postprocessor to be used for
+a device is specified by the postpro command in the device
+description file; see groff_font(5). This can be overridden
+with the <br>
+-X option.</p>
+
+<p style="margin-top: 1em">The default device is ps.</p>
+
+<p style="margin-top: 1em">Postprocessors <br>
+groff provides 3 hardware postprocessors:</p>
+
+<p style="margin-top: 1em">grolbp(1) <br>
+for some Canon printers,</p>
+
+<p style="margin-top: 1em">grolj4(1) <br>
+for printers compatible to the HP LaserJet 4 and PCL5,</p>
+
+<p style="margin-top: 1em">grotty(1) <br>
+for text output using various encodings, e.g., on
+text-oriented terminals or line printers.</p>
+
+<p style="margin-top: 1em">Today, most printing or drawing
+hardware is handled by the operating system, by device
+drivers, or by software interfaces, usually accepting
+PostScript. Conse&acirc; <br>
+quently, there isn&rsquo;t an urgent need for more hardware
+device postprocessors.</p>
+
+<p style="margin-top: 1em">The groff software devices for
+conversion into other document file formats are</p>
+
+<p style="margin-top: 1em">grodvi(1) <br>
+for the DVI format,</p>
+
+<p style="margin-top: 1em">grohtml(1) <br>
+for HTML and XHTML formats,</p>
+
+<p style="margin-top: 1em">grops(1) <br>
+for PostScript.</p>
+
+<p style="margin-top: 1em">gropdf(1) <br>
+for PDF.</p>
+
+<p style="margin-top: 1em">Combined with the many existing
+free conversion tools this should be sufficient to convert a
+troff document into virtually any existing data format.</p>
+
+<p style="margin-top: 1em">Utilities <br>
+The following utility programs around groff are
+available.</p>
+
+<p style="margin-top: 1em">addftinfo(1) <br>
+Add information to troff font description files for use with
+groff.</p>
+
+<p style="margin-top: 1em">afmtodit(1) <br>
+Create font description files for PostScript device.</p>
+
+<p style="margin-top: 1em">eqn2graph(1) <br>
+Convert an eqn image into a cropped image.</p>
+
+<p style="margin-top: 1em">gdiffmk(1) <br>
+Mark differences between groff, nroff, or troff files.</p>
+
+<p style="margin-top: 1em">grap2graph(1) <br>
+Convert a grap diagram into a cropped bitmap image.</p>
+
+<p style="margin-top: 1em">groffer(1) <br>
+General viewer program for groff files and man pages.</p>
+
+<p style="margin-top: 1em">gxditview(1) <br>
+The groff X viewer, the GNU version of xditview.</p>
+
+<p style="margin-top: 1em">hpftodit(1) <br>
+Create font description files for lj4 device.</p>
+
+<p style="margin-top: 1em">indxbib(1) <br>
+Make inverted index for bibliographic databases.</p>
+
+<p style="margin-top: 1em">lkbib(1) <br>
+Search bibliographic databases.</p>
+
+<p style="margin-top: 1em">lookbib(1) <br>
+Interactively search bibliographic databases.</p>
+
+<p style="margin-top: 1em">pdfroff(1) <br>
+Create PDF documents using groff.</p>
+
+<p style="margin-top: 1em">pfbtops(1) <br>
+Translate a PostScript font in .pfb format to ASCII.</p>
+
+<p style="margin-top: 1em">pic2graph(1) <br>
+Convert a pic diagram into a cropped image.</p>
+
+<p style="margin-top: 1em">tfmtodit(1) <br>
+Create font description files for TeX DVI device.</p>
+
+<p style="margin-top: 1em">xditview(1x) <br>
+roff viewer historically distributed with the X Window
+System.</p>
+
+<p style="margin-top: 1em">xtotroff(1) <br>
+Convert X font metrics into GNU troff font metrics.</p>
+
+<p style="margin-top: 1em">ENVIRONMENT <br>
+Normally, the path separator in the following environment
+variables is the colon; this may vary depending on the
+operating system. For example, DOS and Windows <br>
+use a semicolon instead.</p>
+
+<p style="margin-top: 1em">GROFF_BIN_PATH <br>
+This search path, followed by PATH, is used for commands
+that are executed by groff. If it is not set then the
+directory where the groff binaries were in&acirc; <br>
+stalled is prepended to PATH.</p>
+
+<p style="margin-top: 1em">GROFF_COMMAND_PREFIX <br>
+When there is a need to run different roff implementations
+at the same time groff provides the facility to prepend a
+prefix to most of its programs that <br>
+could provoke name clashings at run time (default is to have
+none). Historically, this prefix was the character g, but it
+can be anything. For example, <br>
+gtroff stood for groff&rsquo;s troff, gtbl for the groff
+version of tbl. By setting GROFF_COMMAND_PREFIX to different
+values, the different roff installations <br>
+can be addressed. More exactly, if it is set to prefix xxx
+then groff as a wrapper program internally calls xxxtroff
+instead of troff. This also applies <br>
+to the preprocessors eqn, grn, pic, refer, tbl, soelim, and
+to the utilities indxbib and lookbib. This feature does not
+apply to any programs different <br>
+from the ones above (most notably groff itself) since they
+are unique to the groff package.</p>
+
+<p style="margin-top: 1em">GROFF_ENCODING <br>
+The value of this environment value is passed to the preconv
+preprocessor to select the encoding of input files. Setting
+this option implies groff&rsquo;s com&acirc; <br>
+mand-line option -k (this is, groff actually always calls
+preconv). If set without a value, groff calls preconv
+without arguments. An explicit -K command- <br>
+line option overrides the value of GROFF_ENCODING. See
+preconv(1) for details.</p>
+
+<p style="margin-top: 1em">GROFF_FONT_PATH <br>
+A list of directories in which to search for the devname
+directory in addition to the default ones. See troff(1) and
+groff_font(5) for more details.</p>
+
+<p style="margin-top: 1em">GROFF_TMAC_PATH <br>
+A list of directories in which to search for macro files in
+addition to the default directories. See troff(1) and
+groff_tmac(5) for more details.</p>
+
+<p style="margin-top: 1em">GROFF_TMPDIR <br>
+The directory in which temporary files are created. If this
+is not set but the environment variable TMPDIR instead,
+temporary files are created in the di&acirc; <br>
+rectory TMPDIR. On MS-DOS and Windows platforms, the
+environment variables TMP and TEMP (in that order) are
+searched also, after GROFF_TMPDIR and TMPDIR. <br>
+Otherwise, temporary files are created in /tmp. The
+refer(1), groffer(1), grohtml(1), and grops(1) commands use
+temporary files.</p>
+
+<p style="margin-top: 1em">GROFF_TYPESETTER <br>
+Preset the default device. If this is not set the ps device
+is used as default. This device name is overwritten by the
+option -T.</p>
+
+<p style="margin-top: 1em">EXAMPLES <br>
+The following example illustrates the power of the groff
+program as a wrapper around troff.</p>
+
+<p style="margin-top: 1em">To process a roff file using the
+preprocessors tbl and pic and the me macro set, classical
+troff had to be called by</p>
+
+<p style="margin-top: 1em">pic foo.me | tbl | troff -me
+-Tlatin1 | grotty</p>
+
+<p style="margin-top: 1em">Using groff, this pipe can be
+shortened to the equivalent command</p>
+
+<p style="margin-top: 1em">groff -p -t -me -T latin1
+foo.me</p>
+
+<p style="margin-top: 1em">An even easier way to call this
+is to use grog(1) to guess the preprocessor and macro
+options and execute the generated command (by using
+backquotes to specify <br>
+shell command substitution)</p>
+
+<p style="margin-top: 1em">&lsquo;grog -Tlatin1
+foo.me&lsquo;</p>
+
+<p style="margin-top: 1em">The simplest way is to view the
+contents in an automated way by calling</p>
+
+<p style="margin-top: 1em">groffer foo.me</p>
+
+<p style="margin-top: 1em">BUGS <br>
+On EBCDIC hosts (e.g., OS/390 Unix), output devices ascii
+and latin1 aren&rsquo;t available. Similarly, output for
+EBCDIC code page cp1047 is not available on ASCII <br>
+based operating systems.</p>
+
+<p style="margin-top: 1em">INSTALLATION DIRECTORIES <br>
+groff installs files in varying locations depending on its
+compile-time configuration. On this installation, the
+following locations are used.</p>
+
+<p style="margin-top: 1em">/etc/X11/app-defaults <br>
+Application defaults directory for gxditview(1).</p>
+
+<p style="margin-top: 1em">/usr/bin <br>
+Directory containing groff&rsquo;s executable commands.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/1.22.4/eign
+<br>
+List of common words for indxbib(1).</p>
+
+<p style="margin-top: 1em">/usr/share/groff/1.22.4 <br>
+Directory for data files.</p>
+
+<p style="margin-top: 1em">/usr/dict/papers/Ind <br>
+Default index for lkbib(1) and refer(1).</p>
+
+<p style="margin-top: 1em">/usr/share/doc/groff-base <br>
+Documentation directory.</p>
+
+
+<p style="margin-top: 1em">/usr/share/doc/groff-base/examples
+<br>
+Example directory.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/1.22.4/font
+<br>
+Font directory.</p>
+
+<p style="margin-top: 1em">/usr/share/doc/groff-base/html
+<br>
+HTML documentation directory.</p>
+
+<p style="margin-top: 1em">/usr/lib/font <br>
+Legacy font directory.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/site-font <br>
+Local font directory.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/site-tmac <br>
+Local macro package (tmac file) directory.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/1.22.4/tmac
+<br>
+Macro package (tmac file) directory.</p>
+
+<p style="margin-top: 1em">/usr/share/groff/1.22.4/oldfont
+<br>
+Font directory for compatibility with old versions of groff;
+see grops(1).</p>
+
+<p style="margin-top: 1em">/usr/share/doc/groff-base/pdf
+<br>
+PDF documentation directory.</p>
+
+<p style="margin-top: 1em">/usr/lib/groff/site-tmac <br>
+System macro package (tmac file) directory.</p>
+
+<p style="margin-top: 1em">groff Macro Directory <br>
+This contains all information related to macro packages.
+Note that more than a single directory is searched for those
+files as documented in groff_tmac(5). For <br>
+the groff installation corresponding to this document, it is
+located at /usr/share/groff/1.22.4/tmac. The following files
+contained in the groff macro directory <br>
+have a special meaning:</p>
+
+<p style="margin-top: 1em">troffrc <br>
+Initialization file for troff. This is interpreted by troff
+before reading the macro sets and any input.</p>
+
+<p style="margin-top: 1em">troffrc-end <br>
+Final startup file for troff. It is parsed after all macro
+sets have been read.</p>
+
+<p style="margin-top: 1em">name.tmac <br>
+tmac.name <br>
+Macro file for macro package name.</p>
+
+<p style="margin-top: 1em">groff Font Directory <br>
+This contains all information related to output devices.
+Note that more than a single directory is searched for those
+files; see troff(1). For the groff instal&acirc; <br>
+lation corresponding to this document, it is located at
+/usr/share/groff/1.22.4/font. The following files contained
+in the groff font directory have a special <br>
+meaning:</p>
+
+<p style="margin-top: 1em">devname/DESC <br>
+Device description file for device name, see
+groff_font(5).</p>
+
+<p style="margin-top: 1em">devname/F <br>
+Font file for font F of device name.</p>
+
+<p style="margin-top: 1em">AVAILABILITY <br>
+Information on how to get groff and related information is
+available at the groff page of the GNU website
+&acirc;&uml;http://www.gnu.org/software/groff&acirc;&copy;.</p>
+
+<p style="margin-top: 1em">Three groff mailing lists are
+available:</p>
+
+<p style="margin-top: 1em">bug tracker activity (read-only)
+&acirc;&uml;bug-groff@gnu.org&acirc;&copy;;</p>
+
+<p style="margin-top: 1em">general discussion
+&acirc;&uml;groff@gnu.org&acirc;&copy;; and</p>
+
+<p style="margin-top: 1em">commit activity (read-only)
+&acirc;&uml;groff-commit@gnu.org&acirc;&copy;, which reports
+changes to groff&rsquo;s source code repository by its
+developers.</p>
+
+<p style="margin-top: 1em">Details on repository access and
+much more can be found in the file README at the top
+directory of the groff source package.</p>
+
+<p style="margin-top: 1em">A free implementation of the
+grap preprocessor, written by Ted Faber
+&acirc;&uml;faber@lunabase.org&acirc;&copy;, can be found at
+the grap website
+&acirc;&uml;http://www.lunabase.org/~faber/Vault/ <br>
+software/grap/&acirc;&copy;. This is the only grap supported
+by groff.</p>
+
+<p style="margin-top: 1em">AUTHORS <br>
+groff was written by James Clark
+&acirc;&uml;jjc@jclark.com&acirc;&copy;. This document was
+rewritten, enhanced, and put under the FDL license in 2002
+by Bernd Warken <br>
+&acirc;&uml;groff-bernd.warken-72@web.de&acirc;&copy;.</p>
+
+<p style="margin-top: 1em">SEE ALSO <br>
+Groff: The GNU Implementation of troff, by Trent A. Fisher
+and Werner Lemberg, is the primary groff manual. You can
+browse it interactively with &acirc;info groff&acirc;.</p>
+
+<p style="margin-top: 1em">Due to its complex structure,
+the groff system has many man pages. They can be read with
+man(1) or groffer(1).</p>
+
+<p style="margin-top: 1em">But there are special sections
+of man pages. groff has man pages in sections 1, 5,and 7.
+When there are several man pages with the same name in the
+same man sec&acirc; <br>
+tion, the one with the lowest section is should as first.
+The other man pages can be shown anyway by adding the
+section number as argument before the man page <br>
+name. Reading the man page about the groff language is done
+by one of <br>
+man 7 groff <br>
+groffer 7 groff</p>
+
+<p style="margin-top: 1em">Introduction, history and
+further readings: <br>
+roff(7).</p>
+
+<p style="margin-top: 1em">Viewer for groff files: <br>
+groffer(1), gxditview(1), xditview(1x).</p>
+
+<p style="margin-top: 1em">Wrapper programs for formatters:
+<br>
+groff(1), grog(1).</p>
+
+<p style="margin-top: 1em">Roff preprocessors: <br>
+eqn(1), grn(1), pic(1), chem(1), preconv(1), refer(1),
+soelim(1), tbl(1), grap(1).</p>
+
+<p style="margin-top: 1em">Roff language with the groff
+extensions: <br>
+groff(7), groff_char(7), groff_diff(7), groff_font(5).</p>
+
+<p style="margin-top: 1em">Roff formatter programs: <br>
+nroff(1), troff(1), ditroff(7).</p>
+
+<p style="margin-top: 1em">The intermediate output
+language: <br>
+groff_out(7).</p>
+
+<p style="margin-top: 1em">Postprocessors for the output
+devices: <br>
+grodvi(1), grohtml(1), grolbp(1), grolj4(1), lj4_font(5),
+grops(1), gropdf(1), grotty(1).</p>
+
+<p style="margin-top: 1em">Groff macro packages and
+macro-specific utilities: <br>
+groff_tmac(5), groff_man(7), groff_mdoc(7), groff_me(7),
+groff_mm(7), groff_mmse(7) (only in Swedish locales),
+groff_mom(7), groff_ms(7), groff_www(7), <br>
+groff_trace(7), mmroff(7).</p>
+
+<p style="margin-top: 1em">The following utilities are
+available: <br>
+addftinfo(1), afmtodit(1), eqn2graph(1), gdiffmk(1),
+grap2graph(1), groffer(1), gxditview(1), hpftodit(1),
+indxbib(1), lkbib(1), lookbib(1), pdfroff(1), <br>
+pfbtops(1), pic2graph(1), tfmtodit(1), xtotroff(1).</p>
+
+<p style="margin-top: 1em">groff 1.22.4 28 February 2019
+GROFF(1)</p>
+<hr>

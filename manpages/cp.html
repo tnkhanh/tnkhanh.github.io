@@ -1,0 +1,192 @@
+<p>CP(1) User Commands CP(1)</p>
+
+<p style="margin-top: 1em">NAME <br>
+cp - copy files and directories</p>
+
+<p style="margin-top: 1em">SYNOPSIS <br>
+cp [OPTION]... [-T] SOURCE DEST <br>
+cp [OPTION]... SOURCE... DIRECTORY <br>
+cp [OPTION]... -t DIRECTORY SOURCE...</p>
+
+<p style="margin-top: 1em">DESCRIPTION <br>
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.</p>
+
+<p style="margin-top: 1em">Mandatory arguments to long
+options are mandatory for short options too.</p>
+
+<p style="margin-top: 1em">-a, --archive <br>
+same as -dR --preserve=all</p>
+
+<p style="margin-top: 1em">--attributes-only <br>
+don&rsquo;t copy the file data, just the attributes</p>
+
+<p style="margin-top: 1em">--backup[=CONTROL] <br>
+make a backup of each existing destination file</p>
+
+<p style="margin-top: 1em">-b like --backup but does not
+accept an argument</p>
+
+<p style="margin-top: 1em">--copy-contents <br>
+copy contents of special files when recursive</p>
+
+<p style="margin-top: 1em">-d same as --no-dereference
+--preserve=links</p>
+
+<p style="margin-top: 1em">-f, --force <br>
+if an existing destination file cannot be opened, remove it
+and try again (this option is ignored when the -n option is
+also used)</p>
+
+<p style="margin-top: 1em">-i, --interactive <br>
+prompt before overwrite (overrides a previous -n option)</p>
+
+<p style="margin-top: 1em">-H follow command-line symbolic
+links in SOURCE</p>
+
+<p style="margin-top: 1em">-l, --link <br>
+hard link files instead of copying</p>
+
+<p style="margin-top: 1em">-L, --dereference <br>
+always follow symbolic links in SOURCE</p>
+
+<p style="margin-top: 1em">-n, --no-clobber <br>
+do not overwrite an existing file (overrides a previous -i
+option)</p>
+
+<p style="margin-top: 1em">-P, --no-dereference <br>
+never follow symbolic links in SOURCE</p>
+
+<p style="margin-top: 1em">-p same as
+--preserve=mode,ownership,timestamps</p>
+
+<p style="margin-top: 1em">--preserve[=ATTR_LIST] <br>
+preserve the specified attributes (default:
+mode,ownership,timestamps), if possible additional
+attributes: context, links, xattr, all</p>
+
+<p style="margin-top: 1em">--no-preserve=ATTR_LIST <br>
+don&rsquo;t preserve the specified attributes</p>
+
+<p style="margin-top: 1em">--parents <br>
+use full source file name under DIRECTORY</p>
+
+<p style="margin-top: 1em">-R, -r, --recursive <br>
+copy directories recursively</p>
+
+<p style="margin-top: 1em">--reflink[=WHEN] <br>
+control clone/CoW copies. See below</p>
+
+<p style="margin-top: 1em">--remove-destination <br>
+remove each existing destination file before attempting to
+open it (contrast with --force)</p>
+
+<p style="margin-top: 1em">--sparse=WHEN <br>
+control creation of sparse files. See below</p>
+
+<p style="margin-top: 1em">--strip-trailing-slashes <br>
+remove any trailing slashes from each SOURCE argument</p>
+
+<p style="margin-top: 1em">-s, --symbolic-link <br>
+make symbolic links instead of copying</p>
+
+<p style="margin-top: 1em">-S, --suffix=SUFFIX <br>
+override the usual backup suffix</p>
+
+<p style="margin-top: 1em">-t, --target-directory=DIRECTORY
+<br>
+copy all SOURCE arguments into DIRECTORY</p>
+
+<p style="margin-top: 1em">-T, --no-target-directory <br>
+treat DEST as a normal file</p>
+
+<p style="margin-top: 1em">-u, --update <br>
+copy only when the SOURCE file is newer than the destination
+file or when the destination file is missing</p>
+
+<p style="margin-top: 1em">-v, --verbose <br>
+explain what is being done</p>
+
+<p style="margin-top: 1em">-x, --one-file-system <br>
+stay on this file system</p>
+
+<p style="margin-top: 1em">-Z set SELinux security context
+of destination file to default type</p>
+
+<p style="margin-top: 1em">--context[=CTX] <br>
+like -Z, or if CTX is specified then set the SELinux or
+SMACK security context to CTX</p>
+
+<p style="margin-top: 1em">--help display this help and
+exit</p>
+
+<p style="margin-top: 1em">--version <br>
+output version information and exit</p>
+
+<p style="margin-top: 1em">By default, sparse SOURCE files
+are detected by a crude heuristic and the corresponding DEST
+file is made sparse as well. That is the behavior selected
+by <br>
+--sparse=auto. Specify --sparse=always to create a sparse
+DEST file whenever the SOURCE file contains a long enough
+sequence of zero bytes. Use --sparse=never to <br>
+inhibit creation of sparse files.</p>
+
+<p style="margin-top: 1em">When --reflink[=always] is
+specified, perform a lightweight copy, where the data blocks
+are copied only when modified. If this is not possible the
+copy fails, or <br>
+if --reflink=auto is specified, fall back to a standard
+copy. Use --reflink=never to ensure a standard copy is
+performed.</p>
+
+<p style="margin-top: 1em">The backup suffix is
+&rsquo;~&rsquo;, unless set with --suffix or
+SIMPLE_BACKUP_SUFFIX. The version control method may be
+selected via the --backup option or through the VER&acirc;
+<br>
+SION_CONTROL environment variable. Here are the values:</p>
+
+<p style="margin-top: 1em">none, off <br>
+never make backups (even if --backup is given)</p>
+
+<p style="margin-top: 1em">numbered, t <br>
+make numbered backups</p>
+
+<p style="margin-top: 1em">existing, nil <br>
+numbered if numbered backups exist, simple otherwise</p>
+
+<p style="margin-top: 1em">simple, never <br>
+always make simple backups</p>
+
+<p style="margin-top: 1em">As a special case, cp makes a
+backup of SOURCE when the force and backup options are given
+and SOURCE and DEST are the same name for an existing,
+regular file.</p>
+
+<p style="margin-top: 1em">AUTHOR <br>
+Written by Torbjorn Granlund, David MacKenzie, and Jim
+Meyering.</p>
+
+<p style="margin-top: 1em">REPORTING BUGS <br>
+GNU coreutils online help:
+&lt;https://www.gnu.org/software/coreutils/&gt; <br>
+Report cp translation bugs to
+&lt;https://translationproject.org/team/&gt;</p>
+
+<p style="margin-top: 1em">COPYRIGHT <br>
+Copyright &Acirc;&copy; 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+&lt;https://gnu.org/licenses/gpl.html&gt;. <br>
+This is free software: you are free to change and
+redistribute it. There is NO WARRANTY, to the extent
+permitted by law.</p>
+
+<p style="margin-top: 1em">SEE ALSO <br>
+Full documentation at:
+&lt;https://www.gnu.org/software/coreutils/cp&gt; <br>
+or available locally via: info &rsquo;(coreutils) cp
+invocation&rsquo;</p>
+
+<p style="margin-top: 1em">GNU coreutils 8.30 February 2019
+CP(1)</p>
+<hr>

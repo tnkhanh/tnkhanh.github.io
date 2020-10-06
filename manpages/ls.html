@@ -1,0 +1,282 @@
+<p>LS(1) User Commands LS(1)</p>
+
+<p style="margin-top: 1em">NAME <br>
+ls - list directory contents</p>
+
+<p style="margin-top: 1em">SYNOPSIS <br>
+ls [OPTION]... [FILE]...</p>
+
+<p style="margin-top: 1em">DESCRIPTION <br>
+List information about the FILEs (the current directory by
+default). Sort entries alphabetically if none of -cftuvSUX
+nor --sort is specified.</p>
+
+<p style="margin-top: 1em">Mandatory arguments to long
+options are mandatory for short options too.</p>
+
+<p style="margin-top: 1em">-a, --all <br>
+do not ignore entries starting with .</p>
+
+<p style="margin-top: 1em">-A, --almost-all <br>
+do not list implied . and ..</p>
+
+<p style="margin-top: 1em">--author <br>
+with -l, print the author of each file</p>
+
+<p style="margin-top: 1em">-b, --escape <br>
+print C-style escapes for nongraphic characters</p>
+
+<p style="margin-top: 1em">--block-size=SIZE <br>
+with -l, scale sizes by SIZE when printing them; e.g.,
+&rsquo;--block-size=M&rsquo;; see SIZE format below</p>
+
+<p style="margin-top: 1em">-B, --ignore-backups <br>
+do not list implied entries ending with ~</p>
+
+<p style="margin-top: 1em">-c with -lt: sort by, and show,
+ctime (time of last modification of file status
+information); with -l: show ctime and sort by name;
+otherwise: sort by ctime, <br>
+newest first</p>
+
+<p style="margin-top: 1em">-C list entries by columns</p>
+
+<p style="margin-top: 1em">--color[=WHEN] <br>
+colorize the output; WHEN can be &rsquo;always&rsquo;
+(default if omitted), &rsquo;auto&rsquo;, or
+&rsquo;never&rsquo;; more info below</p>
+
+<p style="margin-top: 1em">-d, --directory <br>
+list directories themselves, not their contents</p>
+
+<p style="margin-top: 1em">-D, --dired <br>
+generate output designed for Emacs&rsquo; dired mode</p>
+
+<p style="margin-top: 1em">-f do not sort, enable -aU,
+disable -ls --color</p>
+
+<p style="margin-top: 1em">-F, --classify <br>
+append indicator (one of */=&gt;@|) to entries</p>
+
+<p style="margin-top: 1em">--file-type <br>
+likewise, except do not append &rsquo;*&rsquo;</p>
+
+<p style="margin-top: 1em">--format=WORD <br>
+across -x, commas -m, horizontal -x, long -l, single-column
+-1, verbose -l, vertical -C</p>
+
+<p style="margin-top: 1em">--full-time <br>
+like -l --time-style=full-iso</p>
+
+<p style="margin-top: 1em">-g like -l, but do not list
+owner</p>
+
+<p style="margin-top: 1em">--group-directories-first <br>
+group directories before files;</p>
+
+<p style="margin-top: 1em">can be augmented with a --sort
+option, but any use of --sort=none (-U) disables
+grouping</p>
+
+<p style="margin-top: 1em">-G, --no-group <br>
+in a long listing, don&rsquo;t print group names</p>
+
+<p style="margin-top: 1em">-h, --human-readable <br>
+with -l and -s, print sizes like 1K 234M 2G etc.</p>
+
+<p style="margin-top: 1em">--si likewise, but use powers of
+1000 not 1024</p>
+
+<p style="margin-top: 1em">-H, --dereference-command-line
+<br>
+follow symbolic links listed on the command line</p>
+
+
+<p style="margin-top: 1em">--dereference-command-line-symlink-to-dir
+<br>
+follow each command line symbolic link</p>
+
+<p style="margin-top: 1em">that points to a directory</p>
+
+<p style="margin-top: 1em">--hide=PATTERN <br>
+do not list implied entries matching shell PATTERN
+(overridden by -a or -A)</p>
+
+<p style="margin-top: 1em">--hyperlink[=WHEN] <br>
+hyperlink file names; WHEN can be &rsquo;always&rsquo;
+(default if omitted), &rsquo;auto&rsquo;, or
+&rsquo;never&rsquo;</p>
+
+<p style="margin-top: 1em">--indicator-style=WORD <br>
+append indicator with style WORD to entry names: none
+(default), slash (-p), file-type (--file-type), classify
+(-F)</p>
+
+<p style="margin-top: 1em">-i, --inode <br>
+print the index number of each file</p>
+
+<p style="margin-top: 1em">-I, --ignore=PATTERN <br>
+do not list implied entries matching shell PATTERN</p>
+
+<p style="margin-top: 1em">-k, --kibibytes <br>
+default to 1024-byte blocks for disk usage; used only with
+-s and per directory totals</p>
+
+<p style="margin-top: 1em">-l use a long listing format</p>
+
+<p style="margin-top: 1em">-L, --dereference <br>
+when showing file information for a symbolic link, show
+information for the file the link references rather than for
+the link itself</p>
+
+<p style="margin-top: 1em">-m fill width with a comma
+separated list of entries</p>
+
+<p style="margin-top: 1em">-n, --numeric-uid-gid <br>
+like -l, but list numeric user and group IDs</p>
+
+<p style="margin-top: 1em">-N, --literal <br>
+print entry names without quoting</p>
+
+<p style="margin-top: 1em">-o like -l, but do not list
+group information</p>
+
+<p style="margin-top: 1em">-p, --indicator-style=slash <br>
+append / indicator to directories</p>
+
+<p style="margin-top: 1em">-q, --hide-control-chars <br>
+print ? instead of nongraphic characters</p>
+
+<p style="margin-top: 1em">--show-control-chars <br>
+show nongraphic characters as-is (the default, unless
+program is &rsquo;ls&rsquo; and output is a terminal)</p>
+
+<p style="margin-top: 1em">-Q, --quote-name <br>
+enclose entry names in double quotes</p>
+
+<p style="margin-top: 1em">--quoting-style=WORD <br>
+use quoting style WORD for entry names: literal, locale,
+shell, shell-always, shell-escape, shell-escape-always, c,
+escape (overrides QUOTING_STYLE environ&acirc; <br>
+ment variable)</p>
+
+<p style="margin-top: 1em">-r, --reverse <br>
+reverse order while sorting</p>
+
+<p style="margin-top: 1em">-R, --recursive <br>
+list subdirectories recursively</p>
+
+<p style="margin-top: 1em">-s, --size <br>
+print the allocated size of each file, in blocks</p>
+
+<p style="margin-top: 1em">-S sort by file size, largest
+first</p>
+
+<p style="margin-top: 1em">--sort=WORD <br>
+sort by WORD instead of name: none (-U), size (-S), time
+(-t), version (-v), extension (-X)</p>
+
+<p style="margin-top: 1em">--time=WORD <br>
+with -l, show time as WORD instead of default modification
+time: atime or access or use (-u); ctime or status (-c);
+also use specified time as sort key if <br>
+--sort=time (newest first)</p>
+
+<p style="margin-top: 1em">--time-style=TIME_STYLE <br>
+time/date format with -l; see TIME_STYLE below</p>
+
+<p style="margin-top: 1em">-t sort by modification time,
+newest first</p>
+
+<p style="margin-top: 1em">-T, --tabsize=COLS <br>
+assume tab stops at each COLS instead of 8</p>
+
+<p style="margin-top: 1em">-u with -lt: sort by, and show,
+access time; with -l: show access time and sort by name;
+otherwise: sort by access time, newest first</p>
+
+<p style="margin-top: 1em">-U do not sort; list entries in
+directory order</p>
+
+<p style="margin-top: 1em">-v natural sort of (version)
+numbers within text</p>
+
+<p style="margin-top: 1em">-w, --width=COLS <br>
+set output width to COLS. 0 means no limit</p>
+
+<p style="margin-top: 1em">-x list entries by lines instead
+of by columns</p>
+
+<p style="margin-top: 1em">-X sort alphabetically by entry
+extension</p>
+
+<p style="margin-top: 1em">-Z, --context <br>
+print any security context of each file</p>
+
+<p style="margin-top: 1em">-1 list one file per line. Avoid
+&rsquo;0 with -q or -b</p>
+
+<p style="margin-top: 1em">--help display this help and
+exit</p>
+
+<p style="margin-top: 1em">--version <br>
+output version information and exit</p>
+
+<p style="margin-top: 1em">The SIZE argument is an integer
+and optional unit (example: 10K is 10*1024). Units are
+K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of
+1000).</p>
+
+<p style="margin-top: 1em">The TIME_STYLE argument can be
+full-iso, long-iso, iso, locale, or +FORMAT. FORMAT is
+interpreted like in date(1). If FORMAT is
+FORMAT1&lt;newline&gt;FORMAT2, then <br>
+FORMAT1 applies to non-recent files and FORMAT2 to recent
+files. TIME_STYLE prefixed with &rsquo;posix-&rsquo; takes
+effect only outside the POSIX locale. Also the <br>
+TIME_STYLE environment variable sets the default style to
+use.</p>
+
+<p style="margin-top: 1em">Using color to distinguish file
+types is disabled both by default and with --color=never.
+With --color=auto, ls emits color codes only when standard
+output is <br>
+connected to a terminal. The LS_COLORS environment variable
+can change the settings. Use the dircolors command to set
+it.</p>
+
+<p style="margin-top: 1em">Exit status: <br>
+0 if OK,</p>
+
+<p style="margin-top: 1em">1 if minor problems (e.g.,
+cannot access subdirectory),</p>
+
+<p style="margin-top: 1em">2 if serious trouble (e.g.,
+cannot access command-line argument).</p>
+
+<p style="margin-top: 1em">AUTHOR <br>
+Written by Richard M. Stallman and David MacKenzie.</p>
+
+<p style="margin-top: 1em">REPORTING BUGS <br>
+GNU coreutils online help:
+&lt;https://www.gnu.org/software/coreutils/&gt; <br>
+Report ls translation bugs to
+&lt;https://translationproject.org/team/&gt;</p>
+
+<p style="margin-top: 1em">COPYRIGHT <br>
+Copyright &Acirc;&copy; 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+&lt;https://gnu.org/licenses/gpl.html&gt;. <br>
+This is free software: you are free to change and
+redistribute it. There is NO WARRANTY, to the extent
+permitted by law.</p>
+
+<p style="margin-top: 1em">SEE ALSO <br>
+Full documentation at:
+&lt;https://www.gnu.org/software/coreutils/ls&gt; <br>
+or available locally via: info &rsquo;(coreutils) ls
+invocation&rsquo;</p>
+
+<p style="margin-top: 1em">GNU coreutils 8.30 February 2019
+LS(1)</p>
+<hr>
